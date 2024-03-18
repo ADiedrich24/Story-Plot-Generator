@@ -1,3 +1,4 @@
+//Array of settings
 const setting = [
     "A bustling medieval marketplace",
   "A remote desert oasis",
@@ -51,6 +52,7 @@ const setting = [
   "A hidden valley inhabited by mythical creatures"
 ];
 
+//Array of characters
 const characters = [
     "James",
   "John",
@@ -152,6 +154,7 @@ const characters = [
   "Maria"
 ]
 
+//Array of conflicts
 const conflict = [
   "The protagonist must confront their inner demons and overcome their own fears.",
   "A betrayal by a trusted ally threatens to derail the protagonist's plans.",
@@ -201,6 +204,7 @@ const conflict = [
   "The protagonist's past comes back to haunt them when an old enemy resurfaces, seeking revenge for past defeats."
 ]
 
+//Array of resolutions
 const resolution = [
   "The protagonist embarks on a new adventure, eager to explore uncharted territories and discover new wonders.",
   "A long-lost friendship is rekindled, bringing joy and happiness to both parties involved.",
@@ -250,3 +254,36 @@ const resolution = [
   "A forgotten memory is rediscovered, bringing clarity and understanding to the protagonist's past.",
   "The protagonist finds closure in an unexpected place, allowing them to finally let go of their past and move forward with their life."
 ]
+
+
+
+//Returns between 2-4 random character names
+const randCharacters = () => {
+  const numOfCharacters = Math.floor(Math.random() * 3) + 2;
+
+  let result = [];
+
+  for (let i = 0; i < numOfCharacters; i++) {
+    const randIndex = Math.floor(Math.random() * characters.length);
+    result.push(characters[randIndex]);
+  }
+  
+  const finalList = result.join(', ');
+
+  return finalList
+}
+
+
+//Formats the story with a setting, the characters, a conflict, and a resolution
+const formatStory = () => {
+  const randSetting = setting[Math.floor(Math.random() * setting.length)];
+  const characterSet = randCharacters();
+  const randConflict = conflict[Math.floor(Math.random() * conflict.length)];
+  const randResolution = resolution[Math.floor(Math.random() * resolution.length)];
+
+  const combined = `Setting: ${randSetting}\nCharacters: ${characterSet}\nConflict: ${randConflict}\nResolution: ${randResolution}`;
+
+  return combined;
+}
+
+console.log(formatStory());
